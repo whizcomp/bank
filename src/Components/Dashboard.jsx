@@ -12,6 +12,7 @@ import Deposit from "./Deposit";
 import Registered from "./Registered";
 import CardDetails from "./CardDetails";
 import ConfirmDeposit from "./ConfirmDeposit";
+import Depositsuccessful from "./Depositsuccessful";
 export default function Dashboard() {
   return (
     <>
@@ -27,6 +28,10 @@ export default function Dashboard() {
               <Route
                 path="/deposit/:account_no"
                 element={<ConfirmDeposit />}
+              ></Route>
+              <Route
+                path="/successful/:account_no"
+                element={<Depositsuccessful />}
               ></Route>
               <Route path="/user/:id" element={<Registered />}></Route>
               <Route path="/user" element={<User />}></Route>

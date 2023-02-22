@@ -35,11 +35,18 @@ const createCard = (nationalId, account_no) => {
 const creditCardList = (id) => {
     return axios.get(`${endpoint}/account/cards/${id}`)
 }
+const deposit = (account_no, amount) => {
+    return axios.put(`${endpoint}/account/deposit`, {
+        account_no,
+        amount
+    })
+}
 export {
     createAccount,
     createCard,
     createUser,
     creditCardList,
+    deposit,
     getAccount,
     getAccounts
 }

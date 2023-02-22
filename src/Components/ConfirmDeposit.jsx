@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { getAccount } from "./Api";
+import { deposit, getAccount } from "./Api";
 export default function ConfirmDeposit() {
   const { account_no } = useParams();
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function ConfirmDeposit() {
     const { data } = await getAccount(account_no);
     setUser(data[0]);
   };
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const validationSchema = Yup.object().shape({
     amount: Yup.string().required().min(1).max(8).label("Amount"),
@@ -45,7 +46,14 @@ export default function ConfirmDeposit() {
       <Formik
         initialValues={{ amount: "" }}
         validationSchema={validationSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={async ({ amount }) => {
+          try {
+            const { data } = await deposit(account_no, amount);
+            navigate(`/successful/${account_no}`);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
       >
         {({
           values,
