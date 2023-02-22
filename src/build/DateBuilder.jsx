@@ -7,7 +7,12 @@ export default function DateBuilder({ name, value, onChange }) {
     <DatePicker
       selected={(value && new Date(value)) || null}
       onChange={(val) => {
-        console.log(val);
+        onChange({
+          target: {
+            name: name,
+            value: val,
+          },
+        });
       }}
       placeholderText="dd/MM/YYYY"
       dateFormat="dd/MM/yyyy"

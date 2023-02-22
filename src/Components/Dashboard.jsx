@@ -9,6 +9,9 @@ import Card from "./Card";
 import Statement from "./Statement";
 import Withdraw from "./Withdraw";
 import Deposit from "./Deposit";
+import Registered from "./Registered";
+import CardDetails from "./CardDetails";
+import ConfirmDeposit from "./ConfirmDeposit";
 export default function Dashboard() {
   return (
     <>
@@ -20,6 +23,12 @@ export default function Dashboard() {
           </div>
           <div className="col-md-9">
             <Switch>
+              <Route path="/newcard/:card_no" element={<CardDetails />}></Route>
+              <Route
+                path="/deposit/:account_no"
+                element={<ConfirmDeposit />}
+              ></Route>
+              <Route path="/user/:id" element={<Registered />}></Route>
               <Route path="/user" element={<User />}></Route>
               <Route path="/account" element={<Account />}></Route>
               <Route path="/card" element={<Card />}></Route>
