@@ -1,5 +1,5 @@
 import axios from "axios";
-const endpoint = `http://localhost:3208`
+const endpoint = `https://bank.kipkoechdev.com`
 
 const createUser = (data) => {
     const {
