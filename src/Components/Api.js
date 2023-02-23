@@ -41,12 +41,31 @@ const deposit = (account_no, amount) => {
         amount
     })
 }
+const withdraw = (account_no, amount) => {
+    return axios.put(`${endpoint}/account/withdraw`, {
+        account_no,
+        amount
+    })
+}
+const users = () => {
+    return axios.get(`${endpoint}/account/users`)
+}
+const accounts = () => {
+    return axios.get(`${endpoint}/account/accounts`)
+}
+const cards = () => {
+    return axios.get(`${endpoint}/account/cards`)
+}
 export {
+    accounts,
+    cards,
     createAccount,
     createCard,
     createUser,
     creditCardList,
     deposit,
     getAccount,
-    getAccounts
+    getAccounts,
+    users,
+    withdraw
 }

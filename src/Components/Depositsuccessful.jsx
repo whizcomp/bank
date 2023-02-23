@@ -15,8 +15,12 @@ export default function Depositsuccessful() {
 
   return (
     <div>
+      <h4 className="pt-5 pb-5 text-center text-success">
+        Transaction successful
+      </h4>
       <div className="card mt-3 mb-5">
-        <div class="card-header pt-3 pb-4">Account Information</div>
+        <div class="card-header pt-3 pb-4 text-center">Account Information</div>
+
         <table className="table p-3 pt-5">
           <thead>
             <tr className="pt-4">
